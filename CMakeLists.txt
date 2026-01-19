@@ -29,8 +29,8 @@ find_package(CGAL REQUIRED COMPONENTS Core)
 # ceres solver
 find_package(Ceres REQUIRED)
 
-# OpenMP
-find_package(OpenMP REQUIRED)
+# # OpenMP
+# find_package(OpenMP REQUIRED)
 
 # MeshObject
 set(MeshObject_SOURCE 
@@ -148,10 +148,10 @@ PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 
-# add executable
-add_executable(optimization src/utilities/optimization.cpp)
-target_link_libraries (optimization ${PCL_LIBRARIES} Ceres::ceres)
-target_include_directories(optimization
-  PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>)
+# # add executable
+# add_executable(optimization src/utilities/optimization.cpp)
+# target_link_libraries (optimization ${PCL_LIBRARIES} Ceres::ceres)
+# target_include_directories(optimization
+#   PUBLIC
+#     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+#     $<INSTALL_INTERFACE:include>)
