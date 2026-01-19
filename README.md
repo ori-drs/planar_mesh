@@ -102,23 +102,73 @@ It is recommended to use a higher number of threads, as this appears to reduce t
 
 ## Interactive Viewer Keybindings
 
-When running in display mode, you can use the following keybindings in the PCL viewer window:
+When running in display mode, you can use the following keybindings in the PCL viewer window.
+
+### Processing Control
+
+| Key(s)  | Action                            |
+| :------ | :-------------------------------- |
+| `space` | Process one frame/loop.           |
+| `1`     | Process 1 step.                   |
+| `2`     | Process 10 steps.                 |
+| `3`     | Process 100 steps.                |
+| `4`     | Process 1000 steps.               |
+| `6`     | Process 10 frames/loops.          |
+| `7`     | Process 50 frames/loops.          |
+| `8`     | Process 100 frames/loops.         |
+| `0`     | Process all remaining data.       |
+| `r`     | Restart the processing from the beginning. |
+
+### Display & Toggles
 
 | Key(s)         | Action                                     |
 | :------------- | :----------------------------------------- |
-| `space`        | Process one frame of data.                 |
-| `1`, `2`, `3`, `4` | Process 10, 100, 1000, 10000 points.      |
-| `6`, `7`, `8`    | Process 10, 100, 1000 frames.              |
-| `0`            | Process all remaining data.                |
-| `r`            | Restart the processing from the beginning. |
-| `,`            | Toggle visibility of the point cloud.      |
-| `.`            | Toggle visibility of mesh edges.           |
-| `/`            | Toggle visibility of mesh triangles.       |
-| `v`            | Toggle wireframe rendering.                |
+| `Return`       | Force an update of the display.            |
+| `,` (comma)    | Toggle visibility of vertices (point cloud). |
+| `.` (period)   | Toggle visibility of boundary edges.       |
+| `/` (slash)    | Toggle visibility of mesh triangles.       |
 | `l`            | Toggle visibility of interior points.      |
-| `numpad 0-8`   | Cycle through different color modes.       |
-| `9`            | Export the current view to PLY files.      |
-| `b`            | Save a simplified version of the mesh.     |
+| `;` (semicolon)| Toggle visibility of internal vertices.    |
+| `v`            | Toggle wireframe rendering.                |
+| `a`            | Cycle through point display modes (Used, Original, Projected). |
+| `numpad 9`     | Toggle visibility of the seed surface.     |
+| `Tab`          | Trigger a color change.                    |
+
+### Color Modes (Numpad)
+
+| Key(s)         | Action                                     |
+| :------------- | :----------------------------------------- |
+| `numpad 0`     | Color by object ID.                        |
+| `numpad 1`     | Color by positional uncertainty.           |
+| `numpad 2`     | Color by normalized positional uncertainty.|
+| `numpad 3`     | Color by radius.                           |
+| `numpad 4`     | Color by surface uncertainty.              |
+| `numpad 5`     | Color by max distance travelled.           |
+| `numpad 6`     | Color by distance travelled.               |
+| `numpad 7`     | Color by projected uncertainty.            |
+| `numpad 8`     | Color by weight.                           |
+
+### Mesh Operations
+
+| Key(s)         | Action                          |
+| :------------- | :------------------------------ |
+| `n`            | Remove non-manifold edges.      |
+| `m`            | Remove non-manifold vertices.   |
+| `k`            | Remove non-manifold faces.      |
+
+### Exporting
+
+| Key(s)         | Action                                       |
+| :------------- | :------------------------------------------- |
+| `9`            | Export current view components to PLY files. |
+| `b`            | Generate and save a simplified mesh (`simplified.ply`). |
+
+### Debugging
+
+| Key(s)         | Action                                       |
+| :------------- | :------------------------------------------- |
+| `Num Lock`     | Toggle display of keycodes in the console.   |
+
 
 ## Configuration Settings
 
