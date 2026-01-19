@@ -30,13 +30,16 @@ The project requires the following dependencies to be installed on your system:
 *   **Point Cloud Library (PCL)** (version 1.14)
 *   **Computational Geometry Algorithms Library (CGAL)**
 *   **OpenMP**
+*   **Git LFS**
 
 ## Build Instructions
 
-1.  Clone the repository:
+1.  Clone the repository and fetch sample data:
     ```bash
     git clone <repository-url>
     cd PlanarMesh
+    git lfs install
+    git lfs pull
     ```
 
 2.  Create a build directory and navigate into it:
@@ -60,7 +63,9 @@ The project requires the following dependencies to be installed on your system:
 
 ### Dataset Configuration
 
-All configuration, including the path to the dataset, is hardcoded in `src/MeshObject/Settings.cpp`. To run the application with your own data, you must modify this file and recompile the project.
+All configuration, including the path to the dataset, is hardcoded in `src/MeshObject/Settings.cpp`. By default, the application is configured to use the `sample` dataset included in the repository (via Git LFS).
+
+To run the application with your own data, you must modify this file and recompile the project.
 
 1.  **Open the settings file:** `src/MeshObject/Settings.cpp`.
 2.  **Add a new dataset entry:** Inside the `Settings::Settings()` constructor, locate the `dataset_map`. Add a new entry with a unique key for your dataset. You need to provide the path to your point cloud file folder (`pcd_file_folder`) and the corresponding pose file (`pose_file_path`).
