@@ -48,15 +48,15 @@ The project requires the following dependencies to be installed on your system:
     cd build
     ```
 
-3.  Run CMake to configure the project and then build it:
+3.  Run CMake to configure the project and then build it (replace `8` with the number of CPU cores to speed up compilation):
     ```bash
     cmake ..
-    make
+    make -j8
     ```
 
 4.  The executable will be located in the `build` directory:
     ```bash
-    ./PlanarMesh
+    ./main
     ```
 
 ## Running the Application
