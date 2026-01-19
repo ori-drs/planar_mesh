@@ -69,6 +69,18 @@ Settings::Settings()
     dataset_map["kitti01"].pose_file_path = "/home/jiahao/datasets/spires_benchmark/kitti_dataset/poses/01.txt";
     dataset_map["kitti01"].range_precision = 0.02; // Velodyne HDL-64E Laserscanner
 
+    dataset_map["mac_keble03"] = DatasetParameters();
+    dataset_map["mac_keble03"].pcd_file_folder = "/Users/jiahao/dataset/keble03/undist-clouds-filtered/";
+    dataset_map["mac_keble03"].pose_file_path = "/Users/jiahao/dataset/keble03/gt-tum.txt";
+    dataset_map["mac_keble03"].remove_double_return_flag = false;
+    dataset_map["mac_keble03"].filter_low_intensity_flag = false;
+
+    dataset_map["sample"] = DatasetParameters();
+    dataset_map["sample"].pcd_file_folder = "../sample_data/slam_clouds/";
+    dataset_map["sample"].pose_file_path = "../sample_data/slam_pose_graph.slam";
+    dataset_map["sample"].remove_double_return_flag = false;
+    dataset_map["sample"].filter_low_intensity_flag = false;
+
     // ======= benchmark final =======
 
     dataset_map["christchurch03"] = DatasetParameters();
@@ -85,12 +97,6 @@ Settings::Settings()
     dataset_map["keble03"].filter_low_intensity_flag = false;
     // 300 scans
 
-    dataset_map["mac_keble03"] = DatasetParameters();
-    dataset_map["mac_keble03"].pcd_file_folder = "/Users/jiahao/dataset/keble03/undist-clouds-filtered/";
-    dataset_map["mac_keble03"].pose_file_path = "/Users/jiahao/dataset/keble03/gt-tum.txt";
-    dataset_map["mac_keble03"].remove_double_return_flag = false;
-    dataset_map["mac_keble03"].filter_low_intensity_flag = false;
-
     dataset_map["observatory01"] = DatasetParameters();
     dataset_map["observatory01"].pcd_file_folder = "/home/jiahao/datasets/spires_benchmark/observatory01/undist-clouds-filtered/";
     dataset_map["observatory01"].pose_file_path = "/home/jiahao/datasets/spires_benchmark/observatory01/gt-tum.txt";
@@ -98,7 +104,7 @@ Settings::Settings()
     dataset_map["observatory01"].filter_low_intensity_flag = false;
     // 300 scans
 
-    std::string dataset = "mac_keble03";
+    std::string dataset = "sample";
     
     headless_mode = false;
     num_scans = 50;
