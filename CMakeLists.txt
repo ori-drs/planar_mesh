@@ -17,9 +17,6 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
-find_package(ament_cmake REQUIRED)
-
 # pcl library
 find_package(PCL 1.14 REQUIRED)
 include_directories(${PCL_INCLUDE_DIRS})
@@ -31,10 +28,9 @@ find_package(CGAL REQUIRED COMPONENTS Core)
 
 # ceres solver
 find_package(Ceres REQUIRED)
-find_package(GTSAM REQUIRED)
 
-# matplotlib-cpp
-find_package(Matplot++ REQUIRED)
+# OpenMP
+find_package(OpenMP REQUIRED)
 
 # MeshObject
 set(MeshObject_SOURCE 
@@ -56,14 +52,13 @@ set(MeshObject_SOURCE
   src/utilities/covariance_math.cpp
   src/utilities/utilities.cpp
   src/MeshObject/Simulation.cpp
-  src/utilities/gtsam_plane.cpp
   src/utilities/omp_utilities.cpp
   src/utilities/simplified_mesh.cpp
 )
 
 # add executable
 add_executable(main src/main.cpp ${MeshObject_SOURCE})
-target_link_libraries (main ${PCL_LIBRARIES} gtsam CGAL::CGAL CGAL::CGAL_Core)
+target_link_libraries (main ${PCL_LIBRARIES} CGAL::CGAL CGAL::CGAL_Core)
 target_include_directories(main
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -160,24 +155,3 @@ target_include_directories(optimization
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>)
-
-
-# add executable
-add_executable(test_gtsam_plane src/test/test_gtsam_plane.cpp src/utilities/gtsam_plane.cpp)
-target_link_libraries (test_gtsam_plane ${PCL_LIBRARIES} gtsam Matplot++::matplot)
-target_include_directories(test_gtsam_plane
-  PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>)
-
-# add executable
-add_executable(test_gtsam_plane_2d src/test/test_gtsam_plane_2d.cpp src/utilities/gtsam_plane_2d.cpp)
-target_link_libraries (test_gtsam_plane_2d ${PCL_LIBRARIES} gtsam Matplot++::matplot)
-target_include_directories(test_gtsam_plane_2d
-  PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>)
-
-
-# call ament build system
-ament_package()

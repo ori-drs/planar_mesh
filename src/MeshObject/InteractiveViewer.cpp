@@ -12,9 +12,6 @@
 
 #include "utilities/simplified_mesh.hpp"
 
-template class InteractiveViewer<VilensPointT>;
-template class InteractiveViewer<BagPointT>;
-
 template <typename PointT>
 InteractiveViewer<PointT>::InteractiveViewer(Application<PointT>& app) 
     : 
@@ -566,3 +563,6 @@ void InteractiveViewer<PointT>::keyboard_callback(const pcl::visualization::Keyb
         std::cout << "restarted" << std::endl;
     }
 }
+
+template class InteractiveViewer<VilensPointT>;
+template class InteractiveViewer<BagPointT>;

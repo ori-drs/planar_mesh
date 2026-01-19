@@ -3,7 +3,7 @@
 
 #include <pcl/point_types.h> // for using macros PCL_ADD_
 
-struct BagPointT
+struct EIGEN_ALIGN16 BagPointT
 {
     PCL_ADD_POINT4D;
     float intensity;
@@ -20,7 +20,7 @@ struct BagPointT
         timestamp = NAN;
         ring = 0;
     };
-} EIGEN_ALIGN16;
+};
 
 // need this for pcl/conversion to work
 POINT_CLOUD_REGISTER_POINT_STRUCT(BagPointT,

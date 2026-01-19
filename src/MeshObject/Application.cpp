@@ -31,10 +31,6 @@
 #include <pcl/io/ply_io.h>
 #include <boost/filesystem.hpp>
 
-template class Application<VilensPointT>;
-template class Application<BagPointT>;
-
-
 template <typename PointT>
 Application<PointT>::Application() 
 {
@@ -139,7 +135,10 @@ void Application<PointT>::load_point_cloud()
     // shuffle pointcloud
     if (settings_.shuffle_pointcloud) 
     {
-        std::random_shuffle(pointcloud->points.begin(), pointcloud->points.end());
+        // Create a random device and generator
+        std::random_device rd;
+        std::mt19937 g(rd());
+        std::shuffle(pointcloud->points.begin(), pointcloud->points.end(), g);
     }
 
     // log
@@ -1392,3 +1391,6 @@ void Application<PointT>::change_color()
         surface->set_random_color();
     }
 }
+
+template class Application<VilensPointT>;
+template class Application<BagPointT>;

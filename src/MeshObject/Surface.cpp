@@ -11,8 +11,6 @@
 #include "MeshObject/GenericPoint.hpp"
 #include "utilities/utilities.hpp"
 
-#include "utilities/gtsam_plane.hpp"
-
 Settings Surface::settings_;
 
 void Surface::initialize_(const std::shared_ptr<Storage>& storage)
@@ -1194,26 +1192,6 @@ void Surface::set_random_color()
 {
     // random color
     color_ = std::make_tuple(rand() % 256, rand() % 256, rand() % 256);
-}
-
-void Surface::optimize_surface_normal()
-{
-    // FIT PLANE
-    double bearing_noise = 0.01;
-    double range_noise = 0.01;
-
-    // generate dataset
-    std::vector<std::pair<Eigen::Vector3d, Eigen::Vector3d>> dataset;
-    for (const auto& vertex : vertices_)
-    {
-        dataset.push_back(std::make_pair(vertex->get_origin(), vertex->get_original_position()));
-    }
-    for (const auto& interior_point : interior_points_)
-    {
-        dataset.push_back(std::make_pair(interior_point->get_origin(), interior_point->get_original_position()));
-    }
-
-    fit_plane_to_points(dataset, mean_, normal_, bearing_noise, range_noise);
 }
 
 bool Surface::remove_unmatched_points()

@@ -3,7 +3,7 @@
 
 #include <pcl/point_types.h> // for using macros PCL_ADD_
 
-struct VilensPointT
+struct EIGEN_ALIGN16 VilensPointT
 {
     PCL_ADD_POINT4D;
     PCL_ADD_NORMAL4D;
@@ -20,7 +20,7 @@ struct VilensPointT
         normal_z = NAN;
         curvature = NAN;
     };
-} EIGEN_ALIGN16;
+};
 
 // need this for pcl/conversion to work
 POINT_CLOUD_REGISTER_POINT_STRUCT(VilensPointT,

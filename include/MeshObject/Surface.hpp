@@ -114,7 +114,6 @@ public:
     void compute_surface_position_std_in_normal_direction();
     double get_surface_position_std_in_normal_direction();
 
-    void optimize_surface_normal();
     bool remove_unmatched_points();
     void remove_singular_components();
     void split_surface_by_connected_components();

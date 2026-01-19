@@ -85,6 +85,12 @@ Settings::Settings()
     dataset_map["keble03"].filter_low_intensity_flag = false;
     // 300 scans
 
+    dataset_map["mac_keble03"] = DatasetParameters();
+    dataset_map["mac_keble03"].pcd_file_folder = "/Users/jiahao/dataset/keble03/undist-clouds-filtered/";
+    dataset_map["mac_keble03"].pose_file_path = "/Users/jiahao/dataset/keble03/gt-tum.txt";
+    dataset_map["mac_keble03"].remove_double_return_flag = false;
+    dataset_map["mac_keble03"].filter_low_intensity_flag = false;
+
     dataset_map["observatory01"] = DatasetParameters();
     dataset_map["observatory01"].pcd_file_folder = "/home/jiahao/datasets/spires_benchmark/observatory01/undist-clouds-filtered/";
     dataset_map["observatory01"].pose_file_path = "/home/jiahao/datasets/spires_benchmark/observatory01/gt-tum.txt";
@@ -92,10 +98,10 @@ Settings::Settings()
     dataset_map["observatory01"].filter_low_intensity_flag = false;
     // 300 scans
 
-    std::string dataset = "keble03";
+    std::string dataset = "mac_keble03";
     
-    headless_mode = true;
-    num_scans = 300;
+    headless_mode = false;
+    num_scans = 50;
     save_folder = "/home/jiahao/datasets/spires_benchmark/" + dataset + "/Benchmark_final/PlanarMesh/";
 
     data_loader_settings.pcd_file_folder = dataset_map[dataset].pcd_file_folder;
@@ -147,7 +153,7 @@ Settings::Settings()
 
     // num_of_delete_before_put_to_repeated_queue = 2;
     
-    num_threads = 28;
+    num_threads = 1;
     record_countent_surface_count = false;
 
     use_queue = true;
